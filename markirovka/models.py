@@ -34,7 +34,7 @@ class Product(models.Model):
     img = ResizedImageField(size=[500, 500], quality=75, upload_to=upload_to, blank=True, null=True, verbose_name="Картинка")
     gtin = models.CharField(name='gtin', max_length=28, verbose_name="GTIN")
     created = models.DateField(auto_now_add=True, db_index=True, verbose_name="Создание")
-    tara = models.ForeignKey(Tara, on_delete=models.CASCADE, verbose_name="Тара")
+    tara = models.ForeignKey(Tara, on_delete=models.CASCADE, related_name='tara',  verbose_name="Тара")
 
     class Meta:
         verbose_name = u"Продукт"

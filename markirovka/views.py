@@ -1,3 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
+def show_admin_custom_page(request):
+    # some code
+    ctx = {'data': 'test'}
+    return render(request, 'spec/admin_custom_page.html', ctx)

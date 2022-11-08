@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
                 ('code', models.CharField(max_length=100)),
                 ('aggr', models.BooleanField(default=False, null=True)),
                 ('nanes', models.BooleanField(default=False, null=True)),
-                ('country.py', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='markirovka.country.py')),
+                ('country', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='markirovka.country')),
             ],
             options={
                 'verbose_name': 'Код коробки',
@@ -88,7 +88,7 @@ class Migration(migrations.Migration):
                 ('code', models.CharField(max_length=100)),
                 ('aggr', models.BooleanField(default=False, null=True)),
                 ('nanes', models.BooleanField(default=False, null=True)),
-                ('country.py', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='markirovka.country.py')),
+                ('country', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='markirovka.country')),
                 ('products', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='markirovka.product')),
             ],
             options={

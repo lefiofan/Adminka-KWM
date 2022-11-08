@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'django_resized',
     'rest_framework',
     'rest_framework.authtoken',
+    'import_export',
 # Local
     'markirovka',
 ]

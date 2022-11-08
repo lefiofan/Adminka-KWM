@@ -14,13 +14,23 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.auth.decorators import user_passes_test
+from django.http import HttpResponse
+from django.template.defaulttags import url
 from django.urls import path
 
 
 from config import settings
 from markirovka.api import api
 from django.conf.urls.static import static
+
+
+def show_phones(request):
+    print('Кто-то зашёл на главную!')
+    return HttpResponse('Привет!')
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', api.urls),
+    path('download/', show_phones),
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
