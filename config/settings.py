@@ -40,6 +40,8 @@ DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = ['127.0.0.1',]
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 
 # Application definition
 
@@ -75,7 +77,10 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            ### ADD YOUR DIRECTORY HERE LIKE SO:
+            BASE_DIR + '/templates/',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

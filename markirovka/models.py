@@ -16,7 +16,7 @@ class Country(models.Model):
 
     class Meta:
         verbose_name = u"Страна"
-        verbose_name_plural = u"Страны"
+        verbose_name_plural = u"Страну"
 
     def __str__(self):
         return self.name

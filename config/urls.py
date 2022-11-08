@@ -20,11 +20,7 @@ from django.urls import path
 from config import settings
 from markirovka.api import api
 from django.conf.urls.static import static
-
-from markirovka.views import HelloView
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', api.urls),
-    path('hello/', HelloView.as_view(), name='hello'),
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
