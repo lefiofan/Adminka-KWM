@@ -10,8 +10,8 @@ class CountryAdmin(admin.ModelAdmin):
 
 @admin.register(Tara)
 class TaraAdmin(admin.ModelAdmin):
-    #search_fields = ("title", "gtin")
     list_display = ('name',)
+    list_display_links = ('name',)
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
@@ -34,3 +34,4 @@ class Donwload_codes_korobAdmin(admin.ModelAdmin):
 @admin.register(Korob)
 class KorobAdmin(admin.ModelAdmin):
     list_display = ('korob_code', 'status', 'aggr', 'nanes',)
+    list_filter = ('status', 'aggr', 'nanes',)

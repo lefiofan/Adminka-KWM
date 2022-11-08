@@ -54,6 +54,8 @@ INSTALLED_APPS = [
 # 3rd party
     'django_cleanup',
     'django_resized',
+    'rest_framework',
+    'rest_framework.authtoken',
 # Local
     'markirovka',
 ]
@@ -115,6 +117,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',  # <-- And here
+    ],
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
