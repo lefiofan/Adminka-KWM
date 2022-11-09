@@ -1,0 +1,44 @@
+version: '3.8'
+services:
+    db_app:
+      image: mysql:5.7
+      container_name: db_app
+      environment:
+        MYSQL_ROOT_PASSWORD: Orapas123Admin
+        MYSQL_DATABASE: adminka_kwm
+        MYSQL_USER: liofan
+        MYSQL_PASSWORD: Orapas123
+      ports:
+        - "3399:3306"
+      restart: always
+      volumes:
+        - db_app_vol:/var/lib/mysql
+    phpmyadmin:
+      image: phpmyadmin/phpmyadmin
+      container_name: pma_app
+      links:
+        - db_app
+      environment:
+        PMA_HOST: db_app
+        PMA_PORT: 3306
+        PMA_ARBITRARY: 1
+      restart: always
+      ports:
+        - 4321:80
+    web:
+       build: .
+       command: python manage.py runserver 0.0.0.0:8989
+       container_name: Adminka
+       restart: always
+       volumes:
+         - .docker-volume/adminka-data:/media
+       environment:
+         - DEBUG=on
+         - SECRET_KEY=4335956fc5ec4f96djsk5b29414b067d8ff4b
+         - DATABASE_URL=mysql://liofan:Orapas123@db_app:3306/adminka_kwm
+       ports:
+         - "8989:8989"
+       depends_on:
+         - db_app
+volumes:
+   db_app_vol:
