@@ -7,7 +7,9 @@ WORKDIR /app
 # Копирует все файлы из нашего локального проекта в контейнер
 COPY . /app
 # Запускает команду pip install для всех библиотек, перечисленных в requirements.txt
-RUN pip install --no-cache-dir --upgrade -r requirements.txt
+#RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
 # Collect static files
-RUN python manage.py collectstatic --noinput
+#RUN python manage.py collectstatic --noinput
+
+#RUN source venv/bin/activate

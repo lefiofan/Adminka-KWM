@@ -43,7 +43,7 @@ class Product(models.Model):
     def __str__(self):
         return self.title
 class Donwload_codes(models.Model):
-    code = models.CharField(name='code', max_length=100, verbose_name="Тара")
+    code = models.CharField(name='code', max_length=100, verbose_name="Групповой код")
     aggr = models.BooleanField(default=False, null=True, verbose_name="Агригирован")
     nanes = models.BooleanField(default=False, null=True, verbose_name="Нанесенн")
     country = models.ForeignKey(Country, on_delete=models.CASCADE, verbose_name="Страна")

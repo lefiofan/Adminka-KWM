@@ -11,9 +11,10 @@ router = Router()
 def get_in_name(request, name: str):
     return get_object_or_404(Product, title=name)
 
-@router.get("/{obiem}", response=products_all2, summary="Получить продукты по ID тары", description="Выводит подробную информацию о продуктах по id тары", auth=django_auth)
-def get_in_tara_id(request, obiem: str):
+@router.get("/dd/{obiem}", response=products_all2, summary="Получить продукты по ID тары", description="Выводит подробную информацию о продуктах по id тары", auth=django_auth)
+def get_in_tara_id(request, obiem: int):
     return get_object_or_404(Product, tara_id=obiem)
+
 # Получить все продукты
 @router.get("/", response=List[products_all2], description="Выводит список продуктов", summary="Выводит список продуктов")
 def get_all(request):

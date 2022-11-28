@@ -62,12 +62,23 @@
                 {% block search %}{% search_form cl %}{% endblock %}
             </div>
 
+
+
             <div class="d-block mb-4 mb-md-0 col-4 col-md-3">
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group">
+
+                        <button type="button" class="btn btn-sm btn-outline-gray-600 btn-success" data-bs-toggle="modal" data-bs-target="#modal">
+                            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                            Загрузить коды</button>
+
+
+
                         {% block object-tools-items %}
                             {% change_list_object_tools %}
                         {% endblock %}
+
+
                     </div>
                 </div>
             </div>
@@ -121,4 +132,39 @@
             {% endif %}
         </div>
     </div>
+
+
+<!-- Bootstrap 5 -->
+<div class="modal fade" id="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Импорт кодов</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        ...
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+  // получим кнопку id="btn" с помощью которой будем открывать модальное окно
+  const btn = document.querySelector('#btn');
+  // активируем контент id="modal" как модальное окно
+  const modal = new bootstrap.Modal(document.querySelector('#modal'));
+  // при нажатии на кнопку
+  btn.addEventListener('click', function() {
+    // открываем модальное окно
+    modal.show();
+  });
+
+});
+<script>
 {% endblock %}

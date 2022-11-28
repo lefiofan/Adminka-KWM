@@ -1,7 +1,7 @@
 version: '3.8'
 services:
     db_app:
-      image: mysql:5.7
+      image: mysql:8
       container_name: db_app
       environment:
         MYSQL_ROOT_PASSWORD: Orapas123Admin
