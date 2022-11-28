@@ -86,7 +86,7 @@
     </div>
 
     <div class="row">
-        <div class="{% if cl.has_filters %}col-md-10{% else %}col-md-12{% endif %}">
+        <div class="{% if cl.has_filters %}col-md-9{% else %}col-md-12{% endif %}">
             {% block date_hierarchy %}
                 {% if cl.date_hierarchy %}{% date_hierarchy cl %}{% endif %}
             {% endblock %}
@@ -115,7 +115,7 @@
                 </div>
             </form>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
             {% if cl.has_filters %}
                 {% block filters %}
                     <div class="card card-body border-0 shadow table-wrapper table-responsive">
@@ -143,11 +143,32 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
-        ...
+        <div>
+  <label for="formFileLg" class="form-label">Выберите страну и файл с кодами</label>
+              <div class="form-group">
+
+    <label for="exampleFormControlSelect1">Пример меню выбора</label>
+
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+
+  </div>
+  <input class="form-control form-control-lg" id="formFileLg" type="file">
+</div>
       </div>
       <div class="modal-footer">
-        ...
+        <button type="button" class="btn btn-sm btn-outline-gray-600 btn-success" data-bs-toggle="modal" data-bs-target="#modal">
+                            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                            Загрузить коды</button>
       </div>
+
+
+
     </div>
   </div>
 </div>

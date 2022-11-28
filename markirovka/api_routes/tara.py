@@ -14,7 +14,7 @@ def create_tara(request, payload: tara_add):
     return {"id": tara.id}
 
 # Получить все тары
-@router.get("/", response=List[tara_all], tags=["Тара"], description="Выводит список тар", summary="Выводит список тар")
+@router.get("/", response=List[tara_all], tags=["Тара"], description="Выводит список тар", summary="Выводит список тар" )
 def get_all(request):
     return Tara.objects.all()
 
