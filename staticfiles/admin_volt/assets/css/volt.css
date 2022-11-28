@@ -14818,8 +14818,7 @@ textarea.form-control-lg {
       transition: all 0.2s ease; }
   .sidebar .nav-link.active {
     color: #F2F4F6; }
-  .sidebar .multi-level .nav-link {
-    padding-left: 53px; }
+
   .sidebar .sidebar-text,
   .sidebar .link-arrow,
   .sidebar .badge,
