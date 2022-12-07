@@ -3,6 +3,7 @@ import csv
 from django.contrib import admin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.utils.safestring import mark_safe
 from import_export.fields import Field
 from import_export.forms import ImportForm, ConfirmImportForm
 
@@ -26,7 +27,22 @@ class TaraAdmin(admin.ModelAdmin):
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     search_fields = ("title", "gtin")
-    list_display = ('title', 'img', 'gtin', 'tara')
+    list_display = ('title',  'gtin', 'tara')
+    readonly_fields = ('get_img',)
+
+
+    fieldsets = (
+        (None, {
+            'fields': ("title", "gtin", "tara")
+        }),
+        (None, {
+            'fields': ("img", "get_img")
+        }),
+
+    )
+    def get_img(self, obj):
+        return mark_safe(f'<img src={obj.img.url} width="250" height="250">')
+    get_img.short_description = "Изображение"
 
 @admin.register(Donwload_codes)
 class Donwload_codesAdmin(admin.ModelAdmin):
@@ -80,3 +96,6 @@ class Donwload_codes_korobAdmin(admin.ModelAdmin):
 class KorobAdmin(admin.ModelAdmin):
     list_display = ('korob_code', 'status', 'aggr', 'nanes',)
     list_filter = ('status', 'aggr', 'nanes',)
+
+admin.site.site_title = "Минвода Маркировка"
+admin.site.site_header = "Маркировка"

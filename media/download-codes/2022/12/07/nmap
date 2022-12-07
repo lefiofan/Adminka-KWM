@@ -1,0 +1,47 @@
+1 testssl/testssl.sh  -H --quiet 192.168.56.102
+
+2 testssl/testssl.sh  -I --quiet 192.168.56.102
+
+3 testssl/testssl.sh  -T --quiet 192.168.56.102
+
+4 testssl/testssl.sh  --BB --quiet 192.168.100.158
+
+5 testssl/testssl.sh  -R --quiet 192.168.100.158
+
+6 testssl/testssl.sh  -C --quiet 192.168.100.158
+
+7 ?
+
+8 testssl/testssl.sh  -B --quiet 192.168.100.158
+
+9 testssl/testssl.sh  -O --quiet 192.168.100.158
+
+10 testssl/testssl.sh  -W --quiet 192.168.100.158 | grep -c 'VULNERABLE,
+
+11 testssl/testssl.sh  -F --quiet 192.168.100.158
+
+12 testssl/testssl.sh  -D --quiet 192.168.100.158
+
+13 testssl/testssl.sh  -J --quiet 192.168.100.158
+
+14 testssl/testssl.sh  -A --quiet 192.168.100.158
+
+15 testssl/testssl.sh  -L --quiet 192.168.100.158
+
+16 testssl/testssl.sh  -4 --quiet 192.168.100.158
+
+
+17 ?
+18 ?
+19 ?
+20 ?
+21 nmap -sV -sC -vv  192.168.100.158  | grep  'Not valid after:  '
+22 ?
+23 ?
+24 nmap -sV -sC -vv 192.168.100.158 | grep -c sha1WithRSAEncryption
+25 ?
+26 ?
+file:///home/liofan/Документы/Проекты/GUI_Kwork_pitest/testssl
+
+
+python3 -m eel main.py web  --noconsole --add-data=/home/liofan/Документы/Проекты/GUI_Kwork_pitest/testssl:testssl --name Tester --icon=ico.ico --onefile
