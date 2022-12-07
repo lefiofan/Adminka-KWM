@@ -47,12 +47,11 @@ class ProductAdmin(admin.ModelAdmin):
 @admin.register(Donwload_codes)
 class Donwload_codesAdmin(admin.ModelAdmin):
 
-   list_filter = ('aggr', 'nanes',)
+   list_filter = ('aggr', 'nanes', 'products',)
    search_fields = ("code",)
    list_display = ('code', 'aggr', 'nanes', 'country', 'products')
 
    change_list_template = "admin/change_list_codes_.html"
-
 
 
    def create_task_view(self, request, queryset):
@@ -61,18 +60,19 @@ class Donwload_codesAdmin(admin.ModelAdmin):
            if form.is_valid():
                country = Country.objects.filter(id=request.POST['country']).get()
                product = Product.objects.filter(id=request.POST['products']).get()
-               newdoc = Download_codes_files(name=request.FILES['file'])
 
+               newdoc = Download_codes_files(name=request.FILES['file'])
                newdoc.save()
 
-               # Получить id записи и получить доступ к файлу и все коды залить в бд
 
                urk = Download_codes_files.objects.get(id=newdoc.id)
 
                with open(f'media/{urk.name}') as csv_file:
-                   csv_reader = csv.reader(csv_file, delimiter=',')
+                   csv_reader = csv.reader(csv_file, delimiter=' ')
                    for code in csv_reader:
-                       new_codes = Donwload_codes(code=str(code[0]), country=country, products=product)
+                       # Проверить GTIN доп проверка
+                       cod = code[0].split(' ')
+                       new_codes = Donwload_codes(code=cod, country=country, products=product)
                        new_codes.save()
                return HttpResponseRedirect('my-view')
            else:

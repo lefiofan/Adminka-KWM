@@ -4,12 +4,13 @@ from django.views import View
 import csv
 from .forms import UploadItemCsvFileForm
 from .models import Country, Product, Download_codes_files, Donwload_codes
-
+from django.db import connection
 
 def index(request):
-    return HttpResponse('<h2> form submitted.</h2>')
+    return HttpResponse('<h2>Главная</h2>')
 
 class Download_codes(View):
+
 
     def my_view(request):
 
@@ -18,20 +19,22 @@ class Download_codes(View):
             if form.is_valid():
                 country = Country.objects.filter(id=request.POST['country']).get()
                 product = Product.objects.filter(id=request.POST['products']).get()
+
                 newdoc = Download_codes_files(name=request.FILES['file'])
 
                 newdoc.save()
 
                 # Получить id записи и получить доступ к файлу и все коды залить в бд
 
-                urk = Download_codes_files.objects.get(id=newdoc.id)
+                name_file = Download_codes_files.objects.get(id=newdoc.id).name
 
-
-                with open(f'media/{urk.name}') as csv_file:
-                    csv_reader = csv.reader(csv_file, delimiter=',')
+                with open(f'media/{name_file}') as csv_file:
+                    csv_reader = csv.reader(csv_file, delimiter=' ', quotechar='|')
                     for code in csv_reader:
-                        new_codes = Donwload_codes(code=str(code[0]), country=country, products=product)
-                        new_codes.save()
+                        print(code)
+                        Donwload_codes(code=str(code[0]), country=country, products=product).save()
+
+
 
                 return redirect('admin:index')
             else:
