@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'django_resized',
     'rest_framework',
     'rest_framework.authtoken',
+    'bootstrap5',
 # Local
     'markirovka',
 ]
@@ -78,8 +79,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            ### ADD YOUR DIRECTORY HERE LIKE SO:
-            BASE_DIR + '/templates/',
+            os.path.join(BASE_DIR, 'templates'),
+            #BASE_DIR + 'templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {

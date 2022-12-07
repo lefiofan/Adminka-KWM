@@ -56,6 +56,8 @@ class Donwload_codes(models.Model):
 
     def __str__(self):
         return self.code
+
+
 class Donwload_codes_korob(models.Model):
     code = models.CharField(name='code', max_length=100, verbose_name="Код")
     aggr = models.BooleanField(default=False, null=True, verbose_name="Агригирован")
@@ -80,3 +82,7 @@ class Korob(models.Model):
         ordering = ['korob_code']
     def __str__(self):
         return self.korob_code
+
+
+class Download_codes_files(models.Model):
+    name = models.FileField(upload_to='download-codes/%Y/%m/%d')
