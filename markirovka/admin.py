@@ -96,6 +96,7 @@ class Donwload_codes_korobAdmin(admin.ModelAdmin):
 class KorobAdmin(admin.ModelAdmin):
     list_display = ('korob_code', 'status', 'aggr', 'nanes',)
     list_filter = ('status', 'aggr', 'nanes',)
+    filter_horizontal = ['products_code']
 
 admin.site.site_title = "Минвода Маркировка"
 admin.site.site_header = "Маркировка"
